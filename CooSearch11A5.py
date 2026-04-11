@@ -1206,8 +1206,6 @@ def get_invoice_status(invoice_id):
                 return None
             time.sleep(1)
     return None
-
-
 # ========== БОТ ==========
 bot = Bot(token=BOT_TOKEN)
 storage = MemoryStorage()
@@ -1215,7 +1213,7 @@ dp = Dispatcher(storage=storage)
 
 user_cooldowns = {}
 
-# ========== ТЕСТОВАЯ КОМАНДА ДЛЯ АДМИНОВ (ПОСЛЕ СОЗДАНИЯ dp) ==========
+# ========== ТЕСТОВАЯ КОМАНДА ДЛЯ АДМИНОВ ==========
 @dp.message(Command("testhttp"))
 async def test_http_command(message: Message):
     if message.from_user.id not in ADMIN_IDS:
@@ -1238,6 +1236,7 @@ async def test_http_command(message: Message):
         results.append(f"@{username}: {status}")
     
     await message.answer("\n".join(results) + "\n\n💡 Если все статусы 'ОШИБКА' — проблема с сетью или прокси.")
+
 
 
 # ========== КЛАВИАТУРЫ ==========
